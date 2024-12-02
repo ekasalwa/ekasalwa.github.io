@@ -1,0 +1,1248 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Font utama */
+}
+
+body {
+    background-color: #0A1A2F; /* Background utama */
+    color: #B0D8FF; /* Warna teks utama */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6; /* Tingkat kenyamanan membaca */
+}
+
+/* Global Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: #7DC0E7; /* Warna judul seragam */
+    font-family: 'Playfair Display', serif; /* Font khusus untuk judul */
+    text-align: center;
+}
+
+p, span, a, .subtitle, .description {
+    color: #B0D8FF; /* Warna teks isi seragam */
+    font-family: 'Roboto', sans-serif; /* Font utama */
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* HALAMAN EKA*/
+.hero {
+    height: 100vh;
+    background: linear-gradient(to bottom, #142F47, #0A1A2F); /* Gradasi biru tua */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%; /* Tampilkan seluruh teks */
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent; /* Garis kedip */
+    }
+    100% {
+        border-color: #3A8DFF;
+    }
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: #7FCFFF;
+    border-right: 4px solid #3A8DFF; /* Garis kedip */
+    position: relative;
+    display: inline-block;
+    white-space: nowrap; /* Tidak pecah baris */
+    overflow: hidden; /* Sembunyikan teks yang belum ditampilkan */
+    animation: typing 4s steps(30, end), blink 0.5s step-end infinite; /* Animasi */
+    width: 100%; /* Tampilkan seluruh teks setelah animasi selesai */
+    animation-fill-mode: forwards; /* Pastikan hasil animasi tetap terlihat */
+    margin-bottom: 5px; /* Atur jarak bawah */
+}
+
+.hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin: 0; /* Hilangkan jarak atas dan bawah */
+    color: #B0D8FF; /* Teks subtitle dengan kontras lembut */
+    animation: fadeInUp 2s ease-in-out;
+}
+
+
+
+.hero-title span {
+    color: #3A8DFF; /* Warna teks spesial */
+    font-family: 'Italianno', cursive; /* Font aksen tambahan */
+}
+
+.about-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.about-buttons .btn {
+    width: auto;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #0077b6;
+    color: #ffffff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    line-height: 1;
+}
+
+.about-buttons .btn:hover {
+    background-color: #7DC0E7;
+    transform: translateY(-3px);
+}
+
+/* ABOUT SECTION */
+.about {
+    position: relative;
+    background-color: #142F47;
+    padding: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInZoom 2s ease-in-out;
+    overflow: hidden;
+}
+
+/* Efek Partikel Latar Belakang */
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 10px 10px;
+    z-index: 0; /* Partikel di belakang */
+    animation: particlesMove 10s linear infinite;
+}
+
+
+/* Animasi Partikel */
+@keyframes particlesMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Container */
+.about-container {
+    position: relative; /* Wajib untuk z-index */
+    z-index: 1; /* Elemen utama di atas partikel */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    overflow: hidden; /* Untuk menyembunyikan elemen yang keluar */
+}
+/* Gambar Animasi Masuk dari Samping */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px) scale(0.8); /* Dari sisi kiri */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1); /* Ke posisi normal */
+    }
+}
+
+.about-image img {
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: slideInLeft 1.5s ease-out forwards; /* Animasi masuk dari kiri */
+    animation-delay: 0.3s; /* Delay agar teks muncul lebih dulu */
+}
+
+.about-image img:hover {
+    transform: scale(1.2) rotateZ(3deg); /* Hover dengan efek zoom & tilt */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Animasi Teks Masuk dari Samping */
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) scale(0.8); /* Dari sisi kanan */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1); /* Ke posisi normal */
+    }
+}
+
+.about-description {
+    opacity: 0;
+    animation: slideInRight 1.5s ease-out forwards; /* Animasi masuk dari kanan */
+    animation-delay: 0.5s; /* Teks muncul setelah gambar */
+}
+
+/* Efek Glow pada Heading */
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px #3A8DFF, 0 0 20px #3A8DFF;
+    }
+    100% {
+        text-shadow: 0 0 20px #7FCFFF, 0 0 30px #7FCFFF;
+    }
+}
+
+.about-description h2 {
+    font-size: 2.5rem;
+    color: #a9cbff;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    animation: textGlow 2s infinite alternate; /* Efek glowing */
+}
+
+/* Tombol Animasi */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.about-buttons .btn {
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    background-color: #3A8DFF;
+    color: #FFFFFF;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    animation: popIn 1s ease-out forwards;
+    animation-delay: 1s; /* Muncul terakhir setelah teks */
+}
+
+.about-buttons .btn:hover {
+    background-color: #215E96;
+    transform: translateY(-5px) scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* PROJECT SECTION */
+.projects {
+    padding: 100px 20px;
+    background-color: #0A1A2F;
+    text-align: center;
+    margin-bottom: 100px; /* Menambah jarak bawah untuk memisahkan dengan section Projects */
+    margin-top: 100px; /* Memastikan jarak atas juga cukup */
+}
+
+.projects h2 {
+    font-size: 2,2rem; /* Memperbesar ukuran font */
+    font-family: 'Playfair Display', serif;
+    color: #3A8DFF;
+    margin-bottom: 30px;
+    animation: textGlow 2s infinite alternate, bounceIn 1s ease-out; /* Menambahkan animasi bounce */
+    border: none;  /* Pastikan tidak ada border */
+    outline: none;  /* Pastikan tidak ada outline */
+}
+
+.project-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #142F47;
+    border: 2px solid #3A8DFF;
+    padding: 30px; /* Tambah padding untuk memberikan ruang lebih besar */
+    border-radius: 10px;
+    width: 300px; /* Lebar kartu lebih besar */
+    text-align: left;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    animation: cardDropIn 1.5s ease-in-out forwards;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    border: 2px solid #3A8DFF;
+    transform: scale(1.1) rotateX(10deg) rotateY(10deg);
+    box-shadow: 0 20px 40px rgba(58, 141, 255, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #3A8DFF;
+    z-index: -1;
+    transition: left 0.4s ease;
+}
+
+.project-card:hover::before {
+    left: 0;
+}
+
+/* animasi crd img*/
+@keyframes smoothZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    animation: smoothZoom 5s infinite alternate ease-in-out;
+}
+
+
+/* PENDIDIKAN SECTION*/
+.timeline-container {
+    padding: 20px 20px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 250px; /* Atur jarak bawah sesuai kebutuhan */
+}
+
+/* Garis utama timeline */
+.timeline-ruler {
+    position: relative;
+    width: 80%; /* Panjang garis utama */
+    height: 2px; /* Ketebalan garis utama */
+    margin: 50px auto; /* Hilangkan margin otomatis */
+    background-color: #1E90FF; /* Warna garis utama */
+    display: flex;
+    justify-content: space-between; /* Spasi antar ticks */
+}
+
+/* Garis vertikal kecil */
+.timeline-tick {
+    position: relative;
+    width: 2px; /* Lebar garis vertikal */
+    height: 15px; /* Tinggi garis vertikal */
+    background-color: #1E90FF; /* Warna garis vertikal */
+    cursor: pointer;
+}
+
+/* Garis Vertikal Besar */
+.timeline-tick.big {
+    height: 20px;
+}
+
+/* Label Tahun */
+.timeline-tick:after {
+    content: attr(data-year);
+    position: absolute;
+    top: 20px; /* Sesuaikan jarak label dari garis vertikal */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #B0C4DE;
+}
+
+
+/* Deskripsi (tersembunyi default) */
+.description {
+    position: absolute;
+    top: 30px; /* Jarak dari garis tahun */
+    left: 50%; /* Pusatkan elemen */
+    transform: translateX(-50%);
+    background-color: #1A1A1A; /* Warna latar belakang */
+    color: #FFFFFF; /* Warna teks */
+    padding: 10px 15px; /* Spasi dalam elemen */
+    font-size: 13px; /* Ukuran font */
+    border-radius: 8px; /* Radius sudut */
+    display: none; /* Default: tersembunyi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Bayangan */
+    z-index: 10; /* Lapisan elemen */
+    white-space: normal; /* Izinkan teks membungkus */
+    max-width: 350px; /* Atur lebar maksimal */
+    text-align: justify; /* Teks rata kiri-kanan */
+    word-wrap: break-word; /* Bungkus kata panjang */
+    line-height: 1.6; /* Spasi antar baris */
+    overflow: visible; /* Pastikan tidak terpotong */
+    transition: opacity 0.3s ease, transform 0.3s ease-in-out; /* Efek animasi */
+}
+
+
+/* Deskripsi saat ditampilkan */
+.description.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px); /* Efek animasi */
+}
+
+/* Animasi melayang */
+.description-left {
+    left: auto; /* Hapus posisi kanan */
+    right: 100%; /* Atur posisi di kiri */
+    margin-right: 5px;
+    margin-left: 0; /* Hapus jarak kiri */
+}
+
+
+/* SKILLS SECTION */
+.skills {
+    padding: 50px 20px;
+    background-color: #0A1A2F;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Memastikan konten berada di tengah secara vertikal */
+    min-height: 100vh; /* Mengatur tinggi minimal agar selalu memenuhi layar */
+    margin-top: 50px; /* Atur jarak atas sesuai kebutuhan */
+}
+
+.skills h2 {
+    font-size: 2.5rem;
+    color: #3A8DFF;
+    margin-bottom: 40px; /* Mengatur jarak bawah teks */
+    font-family: 'Playfair Display', serif;
+    border: none; /* Menghapus border */
+    animation: textGlow 2s infinite alternate, bounceIn 1s ease-out; /* Menambahkan animasi bounce */
+}
+
+
+/* Menambahkan pengaturan agar konten "Skills" tetap berada di tengah */
+.skills-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsif dan terpusat */
+    gap: 90px; /* Menambah jarak antar kolom dan baris */
+    max-width: 999px;
+    width: 100%;
+    padding: 20px;
+    justify-content: center; /* Menyusun grid agar terpusat */
+    margin: 0 auto; /* Memastikan grid berada di tengah */
+}
+
+.skill-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #142F47;
+    border-radius: 20px;
+    width: 150px; /* Lebar yang lebih besar agar terlihat rapi */
+    height: 150px; /* Tinggi yang sesuai dengan lebar */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efek saat hover */
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(58, 141, 255, 0.7);
+}
+
+.skill-card:active, .skill-card:focus {
+    box-shadow: 0 25px 50px rgba(58, 141, 255, 0.7);
+    transform: translateY(-10px) scale(1.1);
+}
+
+.skill-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Efek zoom pada ikon saat hover */
+.skill-card:hover img {
+    transform: scale(1.1);
+}
+
+.skill-card.html:hover {
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+}
+
+.skill-card.css:hover {
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(1.5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes wobble {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(1.5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+/* ANIMATIONS */
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px #7DC0E7;
+    }
+    100% {
+        text-shadow: 0 0 20px #3A8DFF;
+    }
+}
+
+@keyframes cardDropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes imageZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes skillSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* FOOTER */
+.footer {
+    position: relative;
+    background-color: #0A1A2F;
+    padding: 0;
+    color: #bacfdc;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.footer-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Tinggi footer */
+    background: linear-gradient(180deg, #1E90FF 50%, #0A1A2F 100%); /* Warna biru cerah */
+    clip-path: path('M0,100 C300,150 700,50 1000,100 C1300,150 1700,50 2000,100 L2000,300 L0,300 Z');
+    animation: waveAnimation 5s infinite ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container p {
+    font-size: 1rem; /* Ukuran font sedikit diperbesar */
+    color: #7DC0E7; /* Warna teks */
+    margin-top: 120px; /* Menurunkan teks agar lebih jelas */
+    animation: textGlow 3s infinite alternate ease-in-out; /* Animasi glow */
+}
+
+
+/* ANIMASI GELOMBANG */
+@keyframes waveAnimation {
+    0% {
+        clip-path: path('M0,80 C300,130 700,30 1000,80 C1300,130 1700,30 2000,80 L2000,300 L0,300 Z');
+        box-shadow: 0px 0px 30px 15px rgba(30, 144, 255, 0.7); /* Glow lebih besar */
+    }
+    50% {
+        clip-path: path('M0,100 C300,70 700,90 1000,100 C1300,80 1700,110 2000,100 L2000,300 L0,300 Z');
+        box-shadow: 0px 0px 50px 20px rgba(30, 144, 255, 0.9); /* Glow maksimal */
+    }
+    100% {
+        clip-path: path('M0,80 C300,130 700,30 1000,80 C1300,130 1700,30 2000,80 L2000,300 L0,300 Z');
+        box-shadow: 0px 0px 30px 15px rgba(30, 144, 255, 0.7); /* Glow kembali */
+    }
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        border-color: #7DC0E7;
+    }
+    51%, 100% {
+        border-color: transparent;
+    }
+}
+
+/* CONTACT ME */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #3A8DFF;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: #142F47;
+    color: #B0D8FF;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+/* ANIMASI KONTAINER CONTACT */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* FORM */
+.contact-form {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* LABEL INPUT */
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #B0D8FF;
+}
+
+/* ANIMASI INPUT */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #3A8DFF;
+    border-radius: 5px;
+    background-color: #0A1A2F;
+    color: #B0D8FF;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: fadeInInput 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+/* ANIMASI INPUT */
+@keyframes fadeInInput {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ANIMASI INPUT FOCUS */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #7DC0E7;
+    outline: none;
+    transform: scale(1.02);
+}
+
+/* INFO */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #3A8DFF;
+    border-radius: 10px;
+    max-width: 1200px; /* Lebar lebih besar */
+    margin: 50px auto;
+    background-color: #142F47;
+    color: #B0D8FF;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #0A1A2F;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 350px; /* Pastikan cukup lebar */
+    word-wrap: break-word; /* Memotong teks panjang */
+    margin: 0 auto;
+}
+
+
+.info-item {
+    display: flex;
+    align-items: center;
+    background-color: #142F47;
+    color: #B0D8FF;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    word-wrap: break-word; 
+
+    /* ANIMASI */
+    opacity: 0; /* Awal tidak terlihat */
+    animation: bounceInContactInfo 0.8s ease-out forwards;
+}
+
+/* Tambahkan Animasi Berurutan untuk Setiap Info Item */
+.info-item:nth-child(1) {
+    animation-delay: 0.6s; /* Tunda item pertama */
+}
+
+.info-item:nth-child(2) {
+    animation-delay: 0.8s; /* Tunda item kedua */
+}
+
+.info-item:nth-child(3) {
+    animation-delay: 1s; /* Tunda item ketiga */
+}
+
+
+.info-item span {
+    margin-right: 15px; /* Jarak ikon ke teks */
+    font-size: 1.5rem;
+    color: #3A8DFF;
+}
+
+
+.info-item:hover {
+    background-color: #1C314E;
+    transform: translateY(-3px);
+    color: #7DC0E7;
+}
+
+.info-item:hover span {
+    color: #7DC0E7; /* Warna ikon saat hover */
+}
+
+
+/* ANIMASI INFO ITEMS */
+@keyframes fadeInInfo {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.social-icons span {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #3A8DFF;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons span:hover {
+    color: #7DC0E7;
+    transform: scale(1.2);
+}
+
+
+
+/* BUTTON GROUP */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    background-color: #3A8DFF;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 150px; /* Ukuran tombol seragam */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+.button-group button:hover {
+    background-color: #215E96;
+    transform: translateY(-3px);
+}
+
+.button-group a {
+    text-decoration: none; /* Hilangkan garis bawah pada link */
+}
+
+/* ANIMASI TOMBOL */
+@keyframes fadeInButtons {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ANIMASI FADE-IN CONTACT INFO */
+@keyframes fadeInContactInfo {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px); /* Bergerak dari kiri */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Kembali ke posisi awal */
+    }
+}
+
+/* ANIMASI BOUNCE CONTACT INFO */
+@keyframes bounceInContactInfo {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-30px); /* Lebih kecil dan naik sedikit */
+    }
+    50% {
+        transform: scale(1.1) translateY(10px); /* Sedikit lebih besar */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0); /* Kembali ke ukuran normal */
+    }
+}
+
+
+.contact-info a {
+    text-decoration: none;
+    color: inherit; /* Warna mengikuti elemen orangtua */
+    display: flex;
+    align-items: center; /* Agar ikon dan teks tetap sejajar */
+}
+
+.contact-info a:hover {
+    color: #7DC0E7; /* Warna saat hover */
+}
+
+
+/* PORTOFOLIO */
+.portfolio-slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-slide {
+    display: flex;
+    gap: 20px;
+    animation: slide 15s infinite linear; /* Disesuaikan dengan 8 foto */
+}
+
+.portfolio-card {
+    background: linear-gradient(to bottom, #ffcc70, #ff8563); /* Gradient background */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    color: #fff;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-content .tags {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.card-content .year {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Animation Keyframes */
+/* Animasi Slide */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
+  /* RESPONSIVE DESIGN */
+/* Untuk layar kecil seperti ponsel */
+@media (max-width: 768px) {
+    /*EKA*/
+    .hero {
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 1.8rem; /* Perkecil ukuran font */
+    }
+
+    .hero-subtitle {
+        font-size: 1rem; /* Perkecil ukuran font subtitle */
+    }
+
+    .about-buttons {
+        flex-direction: column; /* Susun tombol secara vertikal */
+        gap: 10px;
+    }
+
+    .about-buttons .btn {
+        width: 100%; /* Tombol memenuhi lebar layar */
+    }
+
+    /*ABOUT SECTION*/
+    .about {
+        padding: 60px 20px; /* Kurangi padding */
+    }
+
+    .about-container {
+        flex-direction: column; /* Ubah arah flex menjadi kolom */
+        align-items: center; /* Pusatkan elemen */
+        gap: 30px; /* Tambahkan jarak antar elemen */
+    }
+
+    .about-image img {
+        width: 250px; /* Sesuaikan lebar gambar */
+        height: auto; /* Sesuaikan tinggi secara proporsional */
+    }
+
+    .about-description h2 {
+        font-size: 2rem; /* Perkecil heading */
+    }
+
+    .about-buttons .btn {
+        width: 100%; /* Tombol memenuhi lebar */
+        max-width: 200px; /* Maksimal lebar tombol */
+    }
+
+    /*PROJECT SECTION*/
+    .projects {
+        padding: 50px 15px; /* Kurangi padding */
+    }
+
+    .projects h2 {
+        font-size: 1.8rem; /* Perkecil ukuran heading */
+        margin-bottom: 20px; /* Kurangi jarak bawah heading */
+    }
+
+    .project-cards {
+        flex-direction: column; /* Ubah arah flex menjadi kolom */
+        align-items: center; /* Pusatkan kartu */
+        gap: 30px; /* Tambahkan jarak antar kartu */
+    }
+
+    .project-card {
+        width: 90%; /* Lebar kartu mengikuti lebar layar */
+    }
+
+    .project-card img {
+        max-height: 200px; /* Kurangi tinggi maksimum gambar */
+    }
+
+    /*PENDIDIKAN*/
+    .timeline-container {
+        margin-bottom: 150px; /* Kurangi jarak bawah */
+        padding: 15px; /* Kurangi padding */
+    }
+
+    .timeline-ruler {
+        width: 90%; /* Perbesar garis utama */
+    }
+
+    .timeline-tick:after {
+        font-size: 10px; /* Perkecil ukuran label tahun */
+        top: 25px; /* Sesuaikan jarak label */
+    }
+
+    .description {
+        font-size: 12px; /* Perkecil ukuran font */
+        max-width: 280px; /* Kurangi lebar maksimal deskripsi */
+        line-height: 1.4; /* Kurangi spasi antar baris */
+        padding: 8px 12px; /* Kurangi padding dalam deskripsi */
+    }
+
+    /*SKILLS*/
+    .skills {
+        padding: 30px 15px; /* Kurangi padding */
+        min-height: auto; /* Hapus tinggi minimal untuk perangkat kecil */
+    }
+
+    .skills h2 {
+        font-size: 2rem; /* Perkecil ukuran font */
+        margin-bottom: 30px; /* Kurangi jarak bawah */
+    }
+
+    .skills-cards {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ubah ukuran minimum kolom */
+        gap: 60px; /* Kurangi jarak antar kolom dan baris */
+    }
+
+    .skill-card {
+        width: 120px; /* Perkecil ukuran kartu */
+        height: 120px;
+    }
+
+    .skill-card img {
+        width: 50px; /* Perkecil ikon */
+        height: 50px;
+    }
+    
+    /*CONTACT ME*/
+    .contact-container {
+        flex-direction: column; /* Susun elemen secara vertikal */
+        align-items: center; /* Pusatkan elemen */
+        padding: 15px; /* Kurangi padding */
+    }
+
+    .contact-form {
+        padding-right: 0; /* Hapus padding kanan */
+        margin-bottom: 20px; /* Tambahkan jarak antara form dan info */
+    }
+
+    .contact-info {
+        max-width: 100%; /* Sesuaikan lebar dengan kontainer */
+    }
+
+    .info-item {
+        font-size: 1rem; /* Perkecil ukuran teks */
+        padding: 10px; /* Kurangi padding */
+    }
+
+    .button-group {
+        flex-direction: column; /* Susun tombol secara vertikal */
+        gap: 10px; /* Kurangi jarak antar tombol */
+    }
+
+    .button-group button {
+        min-width: auto; /* Hilangkan lebar minimal */
+        width: 100%; /* Tombol mengikuti lebar kontainer */
+    }
+
+    /*FOOTER*/
+    .footer-container {
+        height: 200px; /* Kurangi tinggi footer untuk tablet */
+        margin-top: 20px; /* Tambahkan margin untuk memperjelas area */
+    }
+
+    .footer-container p {
+        font-size: 0.9rem; /* Perkecil ukuran teks */
+        margin-top: 100px; /* Sesuaikan margin atas untuk tablet */
+    }
+}
+
+

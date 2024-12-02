@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-coba.css">
+</head>
+<body>
+
+    <div class="portfolio-slider" id="portfolioSlider">
+        <div class="portfolio-slide">
+          <div class="portfolio-card">
+            <img src="image1.jpg" alt="Project 1">
+            <div class="card-content">
+              <h3>Tellmann</h3>
+              <p class="tags">TypeScript | Vercel | Next.js | React.js</p>
+              <p>Tellmann Shopify Ecommerce Agency Website. Built to promote Shopify services.</p>
+              <p class="year">2020</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image2.jpg" alt="Project 2">
+            <div class="card-content">
+              <h3>ClickUpload</h3>
+              <p class="tags">TypeScript | Vercel | Next.js | React.js</p>
+              <p>Shopify app that supports file uploads linked to orders and customers.</p>
+              <p class="year">2021</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image3.jpg" alt="Project 3">
+            <div class="card-content">
+              <h3>Kids Living</h3>
+              <p class="tags">Shopify | TypeScript | Sass | Vend POS</p>
+              <p>Ecommerce website for a South African brand with over 3000 products.</p>
+              <p class="year">2017</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image4.jpg" alt="Project 4">
+            <div class="card-content">
+              <h3>Portfolio Pro</h3>
+              <p class="tags">HTML | CSS | JavaScript</p>
+              <p>A clean and interactive portfolio template for professionals.</p>
+              <p class="year">2018</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image5.jpg" alt="Project 5">
+            <div class="card-content">
+              <h3>Eventify</h3>
+              <p class="tags">Vue.js | Firebase | Node.js</p>
+              <p>Event management platform for small businesses.</p>
+              <p class="year">2019</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image6.jpg" alt="Project 6">
+            <div class="card-content">
+              <h3>Foodify</h3>
+              <p class="tags">Angular | Sass | Node.js</p>
+              <p>A food delivery app with real-time order tracking.</p>
+              <p class="year">2020</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image7.jpg" alt="Project 7">
+            <div class="card-content">
+              <h3>TravelBuddy</h3>
+              <p class="tags">React Native | Firebase</p>
+              <p>Mobile app for booking travel accommodations.</p>
+              <p class="year">2021</p>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <img src="image8.jpg" alt="Project 8">
+            <div class="card-content">
+              <h3>EduPlatform</h3>
+              <p class="tags">Python | Django | Postgres</p>
+              <p>A platform for online learning and course management.</p>
+              <p class="year">2022</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const slide = document.querySelector(".portfolio-slide");
+    let isPaused = false;
+
+    // Berhenti animasi saat kartu diklik
+    slide.addEventListener("click", () => {
+        isPaused = !isPaused;
+        if (isPaused) {
+            slide.style.animationPlayState = "paused";
+        } else {
+            slide.style.animationPlayState = "running";
+        }
+    });
+});
+</script>
